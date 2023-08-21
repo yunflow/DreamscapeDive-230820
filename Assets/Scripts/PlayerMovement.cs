@@ -9,10 +9,10 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     [SerializeField] private State playerState;
-    [SerializeField] private float groundSpeed;
-    [SerializeField] private float airSpeed;
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float airGravity;
+    [SerializeField] private float groundSpeed; // 地面左右移动速度
+    [SerializeField] private float airSpeed; // 空中左右移动速度
+    [SerializeField] private float jumpForce; // 跳跃高度
+    [SerializeField] private float airGravity = 0.2f; // 在空中的重力调整值，默认地面重力为1
 
     private bool isOnPlanet;
     private bool canJump;
@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody2D rb;
     private Vector2 rawMoveInput;
     private CapsuleCollider2D footCollider;
+    private PlayerDeath playerDeath;
 
 
     // Unity gameplay
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         footCollider = GetComponent<CapsuleCollider2D>();
         playerState = State.Normal;
+        playerDeath = GetComponent<PlayerDeath>();
     }
 
     private void Start() {
@@ -36,18 +38,24 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Update() {
+        if (playerDeath.IsGameOver) return;
+
         StateSwitch();
         DetectingGravity();
         NormalWalking();
         KeepPlayerOnScreen();
     }
 
+    // 根据所在星球切换角色状态
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.GetComponent<JumpPlanet>()) {
             playerState = State.CanJump;
         }
         else if (other.gameObject.GetComponent<HookPlanet>()) {
             playerState = State.CanHook;
+        }
+        else if (other.gameObject.GetComponent<NormalPlanet>()) {
+            playerState = State.Normal;
         }
     }
 
@@ -62,6 +70,7 @@ public class PlayerMovement : MonoBehaviour {
             : new Vector2(rawMoveInput.x * airSpeed, rb.velocity.y);
     }
 
+    // 根据角色状态切换能力bool
     private void StateSwitch() {
         switch (playerState) {
             default:
@@ -84,7 +93,8 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void OnJump(InputValue value) {
-        if (!canJump) return;
+        if (!canJump || playerDeath.IsGameOver) return;
+
         if (value.isPressed && isOnPlanet) {
             rb.velocity = new Vector2(0f, jumpForce);
         }
@@ -107,12 +117,6 @@ public class PlayerMovement : MonoBehaviour {
             > 1 => -newPos.x + 0.1f,
             < 0 => -newPos.x - 0.1f,
             _ => newPos.x
-        };
-
-        newPos.y = viewportPos.y switch {
-            > 1 => -newPos.y + 0.1f,
-            < 0 => -newPos.y - 0.1f,
-            _ => newPos.y
         };
 
         transform.position = newPos;
