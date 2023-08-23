@@ -7,6 +7,8 @@ public class Score : MonoBehaviour
 {
     public static Score instance;
     public TextMeshProUGUI text;
+    [SerializeField] private int goal = 2;
+
     int score;
 
     // Start is called before the first frame update
@@ -16,9 +18,27 @@ public class Score : MonoBehaviour
             instance = this;
     }
 
+    private void Update()
+    {
+        WinCondition();
+    }
+
     public void ChangeScore(int value)
     {
-        score += value;
-        text.text = "X" + score.ToString();
+        if (score == goal)
+            text.text = "WIN";
+        else
+        {
+            score += value;
+            text.text = "X" + score.ToString();
+        }
+    }
+
+    // win condition, end game when achieve a certian score
+    private void WinCondition()
+    {
+        if (score == goal) {
+            text.text = "WIN";
+        }
     }
 }

@@ -6321,6 +6321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 30514556}
+  goal: 2
 --- !u!1 &2054079711
 GameObject:
   m_ObjectHideFlags: 0
