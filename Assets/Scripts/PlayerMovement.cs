@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private float jumpForce; // 跳跃高度
     [SerializeField] private float airGravity = 0.2f; // 在空中的重力调整值，默认地面重力为1
 
+    [SerializeField] private State stateKeeper;
+
     private bool isOnPlanet;
     private bool canJump;
     private bool canHook;
@@ -50,12 +52,18 @@ public class PlayerMovement : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.GetComponent<JumpPlanet>()) {
             playerState = State.CanJump;
+            stateKeeper = playerState;
         }
         else if (other.gameObject.GetComponent<HookPlanet>()) {
             playerState = State.CanHook;
+            stateKeeper = playerState;
         }
         else if (other.gameObject.GetComponent<NormalPlanet>()) {
             playerState = State.Normal;
+            stateKeeper = playerState;
+        } else
+        {
+            playerState = stateKeeper;
         }
     }
 
