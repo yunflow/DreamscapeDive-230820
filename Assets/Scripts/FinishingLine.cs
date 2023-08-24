@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinishingLine : MonoBehaviour {
 
@@ -21,6 +22,6 @@ public class FinishingLine : MonoBehaviour {
     }
 
     private void NextLevel() {
-        // do something
+        SceneManager.LoadScene("MainMenu"); // Load the next game scene
     }
 }

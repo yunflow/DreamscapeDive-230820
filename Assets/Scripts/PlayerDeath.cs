@@ -34,6 +34,6 @@ public class PlayerDeath : MonoBehaviour {
     }
 
     private void LoadScene() {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainLevel");
     }
 }
