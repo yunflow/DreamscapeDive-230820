@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour {
     private Vector2 rawMoveInput;
     private CapsuleCollider2D footCollider;
     private PlayerDeath playerDeath;
+    private NewHook hook;
 
 
     // Unity gameplay
@@ -33,10 +35,12 @@ public class PlayerMovement : MonoBehaviour {
         footCollider = GetComponent<CapsuleCollider2D>();
         playerState = State.Normal;
         playerDeath = GetComponent<PlayerDeath>();
+        hook = FindObjectOfType<NewHook>();
     }
 
     private void Start() {
         mainCamera = Camera.main;
+        hook.gameObject.SetActive(false);
     }
 
     private void Update() {
@@ -54,11 +58,16 @@ public class PlayerMovement : MonoBehaviour {
             playerState = State.CanJump;
         }
         else if (other.gameObject.GetComponent<HookPlanet>()) {
+            hook.gameObject.SetActive(true);
             playerState = State.CanHook;
         }
         else if (other.gameObject.GetComponent<NormalPlanet>()) {
             playerState = State.Normal;
         } 
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+        hook.gameObject.SetActive(false);
     }
 
     private void OnMove(InputValue value) {
@@ -99,6 +108,14 @@ public class PlayerMovement : MonoBehaviour {
 
         if (value.isPressed && isOnPlanet) {
             rb.velocity = new Vector2(0f, jumpForce);
+        }
+    }
+
+    private void OnHook(InputValue value) {
+        if (!canHook || playerDeath.IsGameOver) return;
+
+        if (value.isPressed && isOnPlanet) {
+            hook.StartHook();
         }
     }
 
