@@ -16,16 +16,14 @@ public class PlayerDeath : MonoBehaviour {
     private void LateUpdate() {
         if (IsGameOver) return;
 
-        DetectingDeath();
+        
     }
 
-    // 检查玩家掉落到屏幕下方，游戏结束
-    private void DetectingDeath() {
-        Vector3 viewportPos = mainCamera.WorldToViewportPoint(transform.position);
-
-        if (viewportPos.y < 0) {
+    // detect death by touch the bottom of the map.
+    private void OnTriggerEnter2D(Collider2D player)
+    {
+        if (player.CompareTag("Player"))
             GameOver();
-        }
     }
 
     public void GameOver() {
