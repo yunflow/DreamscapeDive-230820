@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +6,7 @@ public class PlayerMovement : MonoBehaviour {
         Normal,
         CanJump,
         CanHook,
+        IsReverse,
     }
 
     [SerializeField] private State playerState;
@@ -14,19 +14,18 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private float airSpeed; // 空中左右移动速度
     [SerializeField] private float jumpForce; // 跳跃高度
     [SerializeField] private float airGravity = 0.2f; // 在空中的重力调整值，默认地面重力为1
-
-  
-
+    [SerializeField] private NewHook hook;
+    
     private bool isOnPlanet;
     private bool canJump;
     private bool canHook;
+    private bool isReverse;
 
     private Camera mainCamera;
     private Rigidbody2D rb;
     private Vector2 rawMoveInput;
     private CapsuleCollider2D footCollider;
     private PlayerDeath playerDeath;
-    private NewHook hook;
 
 
     // Unity gameplay
@@ -35,7 +34,6 @@ public class PlayerMovement : MonoBehaviour {
         footCollider = GetComponent<CapsuleCollider2D>();
         playerState = State.Normal;
         playerDeath = GetComponent<PlayerDeath>();
-        hook = FindObjectOfType<NewHook>();
     }
 
     private void Start() {
@@ -54,16 +52,26 @@ public class PlayerMovement : MonoBehaviour {
 
     // 根据所在星球切换角色状态
     private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.GetComponent<JumpPlanet>()) {
-            playerState = State.CanJump;
+        if (other.gameObject.GetComponent<Planet>()) {
+            Planet.State planetState = other.gameObject.GetComponent<Planet>().planetState;
+
+            switch (planetState) {
+                default:
+                case Planet.State.Hook:
+                    hook.gameObject.SetActive(true);
+                    playerState = State.CanHook;
+                    break;
+                case Planet.State.Normal:
+                    playerState = State.Normal;
+                    break;
+                case Planet.State.Jump:
+                    playerState = State.CanJump;
+                    break;
+                case Planet.State.Reverse:
+                    playerState = State.IsReverse;
+                    break;
+            }
         }
-        else if (other.gameObject.GetComponent<HookPlanet>()) {
-            hook.gameObject.SetActive(true);
-            playerState = State.CanHook;
-        }
-        else if (other.gameObject.GetComponent<NormalPlanet>()) {
-            playerState = State.Normal;
-        } 
     }
 
     private void OnCollisionExit2D(Collision2D other) {
@@ -71,7 +79,12 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void OnMove(InputValue value) {
-        rawMoveInput = value.Get<Vector2>();
+        if (isReverse) {
+            rawMoveInput = -value.Get<Vector2>();
+        }
+        else {
+            rawMoveInput = value.Get<Vector2>();
+        }
     }
 
     // 普通左右移动，根据是否在planet上改变速度
@@ -86,17 +99,26 @@ public class PlayerMovement : MonoBehaviour {
         switch (playerState) {
             default:
             case State.Normal:
+                isReverse = false;
                 canJump = false;
                 canHook = false;
                 break;
 
             case State.CanJump:
+                isReverse = false;
                 canJump = true;
                 canHook = false;
                 break;
             case State.CanHook:
+                isReverse = false;
                 canJump = false;
                 canHook = true;
+                break;
+
+            case State.IsReverse:
+                isReverse = true;
+                canJump = false;
+                canHook = false;
                 break;
         }
 
