@@ -15,7 +15,8 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private float jumpForce; // 跳跃高度
     [SerializeField] private float airGravity = 0.2f; // 在空中的重力调整值，默认地面重力为1
     [SerializeField] private NewHook hook;
-    
+
+    [HideInInspector] public bool allowMove = true;
     private bool isOnPlanet;
     private bool canJump;
     private bool canHook;
@@ -58,7 +59,6 @@ public class PlayerMovement : MonoBehaviour {
             switch (planetState) {
                 default:
                 case Planet.State.Hook:
-                    hook.gameObject.SetActive(true);
                     playerState = State.CanHook;
                     break;
                 case Planet.State.Normal:
@@ -74,10 +74,6 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    private void OnCollisionExit2D(Collision2D other) {
-        hook.gameObject.SetActive(false);
-    }
-
     private void OnMove(InputValue value) {
         if (isReverse) {
             rawMoveInput = -value.Get<Vector2>();
@@ -89,6 +85,8 @@ public class PlayerMovement : MonoBehaviour {
 
     // 普通左右移动，根据是否在planet上改变速度
     private void NormalWalking() {
+        if (!allowMove) return;
+
         rb.velocity = isOnPlanet
             ? new Vector2(rawMoveInput.x * groundSpeed, rb.velocity.y)
             : new Vector2(rawMoveInput.x * airSpeed, rb.velocity.y);
@@ -99,23 +97,27 @@ public class PlayerMovement : MonoBehaviour {
         switch (playerState) {
             default:
             case State.Normal:
+                hook.gameObject.SetActive(false);
                 isReverse = false;
                 canJump = false;
                 canHook = false;
                 break;
 
             case State.CanJump:
+                hook.gameObject.SetActive(false);
                 isReverse = false;
                 canJump = true;
                 canHook = false;
                 break;
             case State.CanHook:
+                hook.gameObject.SetActive(true);
                 isReverse = false;
                 canJump = false;
                 canHook = true;
                 break;
 
             case State.IsReverse:
+                hook.gameObject.SetActive(false);
                 isReverse = true;
                 canJump = false;
                 canHook = false;
@@ -136,8 +138,9 @@ public class PlayerMovement : MonoBehaviour {
     private void OnHook(InputValue value) {
         if (!canHook || playerDeath.IsGameOver) return;
 
-        if (value.isPressed && isOnPlanet) {
+        if (value.isPressed) {
             hook.StartHook();
+            playerState = State.Normal;
         }
     }
 

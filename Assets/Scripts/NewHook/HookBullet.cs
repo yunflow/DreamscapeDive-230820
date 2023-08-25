@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -37,6 +36,7 @@ public class HookBullet : MonoBehaviour {
         if (other.gameObject.CompareTag("Planet")) {
             isGrowing = false;
             isHooked = true;
+
             Vector2 dir = (player.transform.position - other.transform.position).normalized;
             playerTargetPos = (Vector2)other.transform.position + (new Vector2(0.5f, 0.5f) * dir);
         }
@@ -44,7 +44,9 @@ public class HookBullet : MonoBehaviour {
 
     private IEnumerator HookProcessing() {
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+        PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
         rb.isKinematic = true;
+        playerMovement.allowMove = false;
 
         float timePassed = 0f;
         while (timePassed < 1f) {
@@ -55,6 +57,7 @@ public class HookBullet : MonoBehaviour {
         }
 
         rb.isKinematic = false;
+        playerMovement.allowMove = true;
         Destroy(gameObject);
     }
 
