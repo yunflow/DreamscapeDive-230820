@@ -25,5 +25,6 @@ public class FinishingLine : MonoBehaviour {
 
     private void NextLevel() {
         SceneManager.LoadScene("MainMenu"); // Load the next game scene
+        AudioManager.Instance.musicSource.Play();
     }
 }
