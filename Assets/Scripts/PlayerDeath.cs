@@ -15,8 +15,6 @@ public class PlayerDeath : MonoBehaviour {
 
     private void LateUpdate() {
         if (IsGameOver) return;
-
-        
     }
 
     // detect death by touch the bottom of the map.
@@ -35,6 +33,8 @@ public class PlayerDeath : MonoBehaviour {
     }
 
     private void LoadScene() {
-        SceneManager.LoadScene("MainLevel");
+        int level = LevelManager.Instance.GetCurrentLevelIndex();
+        Debug.Log("Reloading: " + level);
+        SceneManager.LoadScene(level);
     }
 }

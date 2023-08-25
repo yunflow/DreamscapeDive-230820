@@ -7,11 +7,13 @@ public class MainMenu : MonoBehaviour
 {
     public void QuitGame()
     {
+        LevelManager.Instance.QuitToStartScene();
         SceneManager.LoadScene("StartMenu"); // Load the start menu
     }
 
     public void NextLevel()
     {
-        SceneManager.LoadScene("Level2"); // Load the next game scene
+        int level = LevelManager.Instance.CompleteLevel();
+        SceneManager.LoadScene(level);
     }
 }
