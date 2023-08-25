@@ -15,6 +15,8 @@ public class FinishingLine : MonoBehaviour {
     private void DetectingStar() {
         if (score.score >= goal)
         {
+            AudioManager.Instance.musicSource.Stop();
+            AudioManager.Instance.PlaySFX("Win");
             Debug.Log("WIN!!!");
             NextLevel();
         }
