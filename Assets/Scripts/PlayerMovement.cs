@@ -15,18 +15,21 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private float jumpForce; // 跳跃高度
     [SerializeField] private float airGravity = 0.2f; // 在空中的重力调整值，默认地面重力为1
     [SerializeField] private NewHook hook;
+    [SerializeField] private Transform playerImage;
 
     [HideInInspector] public bool allowMove = true;
     private bool isOnPlanet;
     private bool canJump;
     private bool canHook;
     private bool isReverse;
+    private bool isMoving;
 
     private Camera mainCamera;
     private Rigidbody2D rb;
     private Vector2 rawMoveInput;
     private CapsuleCollider2D footCollider;
     private PlayerDeath playerDeath;
+    private float imageLocalX;
 
 
     // Unity gameplay
@@ -40,6 +43,7 @@ public class PlayerMovement : MonoBehaviour {
     private void Start() {
         mainCamera = Camera.main;
         hook.gameObject.SetActive(false);
+        imageLocalX = playerImage.localScale.x;
     }
 
     private void Update() {
@@ -90,6 +94,14 @@ public class PlayerMovement : MonoBehaviour {
         rb.velocity = isOnPlanet
             ? new Vector2(rawMoveInput.x * groundSpeed, rb.velocity.y)
             : new Vector2(rawMoveInput.x * airSpeed, rb.velocity.y);
+        isMoving = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
+        FlipIfMoveToLeft(isMoving);
+    }
+
+    private void FlipIfMoveToLeft(bool isRun) {
+        if (isRun) {
+            playerImage.localScale = new Vector2(-Mathf.Sign(rb.velocity.x) * imageLocalX, playerImage.localScale.y);
+        }
     }
 
     // 根据角色状态切换能力bool
