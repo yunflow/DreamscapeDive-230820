@@ -27,6 +27,7 @@ public class PlayerDeath : MonoBehaviour {
     }
 
     public void GameOver() {
+        AudioManager.Instance.PlaySFX("Die");
         IsGameOver = true;
         Debug.Log("GameOver");
         gameOverImage.SetActive(true);
