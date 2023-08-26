@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5665495146855072882}
   - component: {fileID: 1398925565976898647}
+  - component: {fileID: 4257519411663634396}
   m_Layer: 0
   m_Name: JumpPlanet
   m_TagString: Untagged
@@ -25,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 276706712469307158}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.194, y: 0.04, z: 0}
-  m_LocalScale: {x: 0.73484, y: 0.73484, z: 0.73484}
+  m_LocalPosition: {x: 0.025, y: 0.516, z: 0}
+  m_LocalScale: {x: 0.7867932, y: 0.7867932, z: 0.7867932}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1253535263412184297}
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 89c73ff9c58c2408baad0d54b8de7a7f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b295fed454b5e4ed5829ac629cca9739, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,6 +85,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4257519411663634396
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276706712469307158}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6395d7f45790405ea422e942810a026, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3575554980315874768
 GameObject:
   m_ObjectHideFlags: 0

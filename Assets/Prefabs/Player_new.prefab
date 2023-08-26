@@ -339,7 +339,7 @@ Transform:
   - {fileID: 7807891550548434343}
   - {fileID: 8896757269617689164}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &6257996468953633962
 CapsuleCollider2D:
@@ -451,6 +451,7 @@ MonoBehaviour:
   jumpForce: 2.8
   airGravity: 0.2
   hook: {fileID: 5868458733887952341}
+  hookBackground: {fileID: 4489346766754139467}
   playerImage: {fileID: 7709218945528663997}
   allowMove: 1
 --- !u!114 &247478558959446406

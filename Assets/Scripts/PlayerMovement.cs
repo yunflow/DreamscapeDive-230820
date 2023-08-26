@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private float jumpForce; // 跳跃高度
     [SerializeField] private float airGravity = 0.2f; // 在空中的重力调整值，默认地面重力为1
     [SerializeField] private NewHook hook;
+    [SerializeField] private GameObject hookBackground;
     [SerializeField] private Transform playerImage;
 
     [HideInInspector] public bool allowMove = true;
@@ -43,6 +44,7 @@ public class PlayerMovement : MonoBehaviour {
     private void Start() {
         mainCamera = Camera.main;
         hook.gameObject.SetActive(false);
+        hookBackground.SetActive(false);
         imageLocalX = playerImage.localScale.x;
     }
 
@@ -79,21 +81,24 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void OnMove(InputValue value) {
-        if (isReverse) {
-            rawMoveInput = -value.Get<Vector2>();
-        }
-        else {
-            rawMoveInput = value.Get<Vector2>();
-        }
+        rawMoveInput = value.Get<Vector2>();
     }
 
     // 普通左右移动，根据是否在planet上改变速度
     private void NormalWalking() {
         if (!allowMove) return;
 
-        rb.velocity = isOnPlanet
-            ? new Vector2(rawMoveInput.x * groundSpeed, rb.velocity.y)
-            : new Vector2(rawMoveInput.x * airSpeed, rb.velocity.y);
+        if (isReverse) {
+            rb.velocity = isOnPlanet
+                ? new Vector2(-rawMoveInput.x * groundSpeed, rb.velocity.y)
+                : new Vector2(-rawMoveInput.x * airSpeed, rb.velocity.y);
+        }
+        else {
+            rb.velocity = isOnPlanet
+                ? new Vector2(rawMoveInput.x * groundSpeed, rb.velocity.y)
+                : new Vector2(rawMoveInput.x * airSpeed, rb.velocity.y);
+        }
+
         isMoving = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
         FlipIfMoveToLeft(isMoving);
     }
@@ -110,6 +115,7 @@ public class PlayerMovement : MonoBehaviour {
             default:
             case State.Normal:
                 hook.gameObject.SetActive(false);
+                hookBackground.SetActive(false);
                 isReverse = false;
                 canJump = false;
                 canHook = false;
@@ -117,12 +123,14 @@ public class PlayerMovement : MonoBehaviour {
 
             case State.CanJump:
                 hook.gameObject.SetActive(false);
+                hookBackground.SetActive(false);
                 isReverse = false;
                 canJump = true;
                 canHook = false;
                 break;
             case State.CanHook:
                 hook.gameObject.SetActive(true);
+                hookBackground.SetActive(true);
                 isReverse = false;
                 canJump = false;
                 canHook = true;
@@ -130,6 +138,7 @@ public class PlayerMovement : MonoBehaviour {
 
             case State.IsReverse:
                 hook.gameObject.SetActive(false);
+                hookBackground.SetActive(false);
                 isReverse = true;
                 canJump = false;
                 canHook = false;
