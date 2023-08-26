@@ -7,6 +7,7 @@ public class Score : MonoBehaviour
 {
     public static Score instance;
     public TextMeshProUGUI text;
+    public ScoreBar scoreBar;
 
     public int score;
 
@@ -20,6 +21,7 @@ public class Score : MonoBehaviour
     public void ChangeScore(int value)
     { 
         score += value;
+        scoreBar.SetScore(score);
         text.text = "X" + score.ToString();
     }
 
