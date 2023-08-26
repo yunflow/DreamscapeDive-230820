@@ -5,6 +5,7 @@ public class Teleport : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.GetComponent<PlayerMovement>()) {
+            AudioManager.Instance.PlaySFX("Teleport");
             other.gameObject.transform.position = portOut.position;
         }
     }

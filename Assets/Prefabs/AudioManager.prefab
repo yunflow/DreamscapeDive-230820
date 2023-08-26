@@ -280,7 +280,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4183977638669003755}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.13266, y: 4.4151, z: 0.125319}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -304,24 +304,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSounds:
   - name: Theme
-    clip: {fileID: 8300000, guid: 157074e0136344a1d99bdab725de9665, type: 3}
+    clip: {fileID: 8300000, guid: ac258ad51e8bf4e0289ab79306c989b4, type: 3}
   sfxSounds:
   - name: Jump
-    clip: {fileID: 8300000, guid: 9918a26acd3514496b7ab60eb0de98e1, type: 3}
+    clip: {fileID: 8300000, guid: 5d1acfe8525b24d3686c6ed987652915, type: 3}
   - name: Hook
     clip: {fileID: 8300000, guid: 4303a1f105db04834a5375a80c80eb21, type: 3}
   - name: Reverse
     clip: {fileID: 8300000, guid: 4303a1f105db04834a5375a80c80eb21, type: 3}
   - name: Win
-    clip: {fileID: 8300000, guid: f6380f254ce0c4cbeac1116dd15933e7, type: 3}
+    clip: {fileID: 8300000, guid: f856d834380ff47efabc930f183f45f2, type: 3}
   - name: Die
-    clip: {fileID: 8300000, guid: 79e7b4130775a410fb308da1b347e0d0, type: 3}
+    clip: {fileID: 8300000, guid: f856d834380ff47efabc930f183f45f2, type: 3}
   - name: Teleport
-    clip: {fileID: 8300000, guid: 4303a1f105db04834a5375a80c80eb21, type: 3}
+    clip: {fileID: 8300000, guid: ac869f86fd7e842888e2e4c5c36497a6, type: 3}
   - name: Start
     clip: {fileID: 8300000, guid: 4303a1f105db04834a5375a80c80eb21, type: 3}
-  - name: SFX1
-    clip: {fileID: 8300000, guid: 4303a1f105db04834a5375a80c80eb21, type: 3}
+  - name: HitOnStone
+    clip: {fileID: 8300000, guid: 05bf13f7764a34c30b7e4e3042ec5582, type: 3}
   - name: SFX2
     clip: {fileID: 8300000, guid: 4303a1f105db04834a5375a80c80eb21, type: 3}
   - name: SFX3

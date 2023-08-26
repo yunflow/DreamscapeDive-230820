@@ -21,11 +21,13 @@ public class PlayerDeath : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D player)
     {
         if (player.CompareTag("Player"))
+        {
+            AudioManager.Instance.PlaySFX("Die");
             GameOver();
+        }
     }
 
     public void GameOver() {
-        AudioManager.Instance.PlaySFX("Die");
         IsGameOver = true;
         Debug.Log("GameOver");
         gameOverImage.SetActive(true);
