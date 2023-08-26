@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour {
-    private enum State {
+    public enum State {
         Normal,
         CanJump,
         CanHook,
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour {
     private bool canJump;
     private bool canHook;
     private bool isReverse;
-    private bool isMoving;
+    public bool isMoving;
 
     private Camera mainCamera;
     private Rigidbody2D rb;
@@ -186,5 +186,9 @@ public class PlayerMovement : MonoBehaviour {
         };
 
         transform.position = newPos;
+    }
+
+    public State GetState() {
+        return playerState;
     }
 }

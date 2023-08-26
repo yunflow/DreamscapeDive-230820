@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5665495146855072882}
   - component: {fileID: 1398925565976898647}
   - component: {fileID: 4257519411663634396}
+  - component: {fileID: 9197095154540888425}
   m_Layer: 0
   m_Name: JumpPlanet
   m_TagString: Untagged
@@ -106,6 +107,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9197095154540888425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276706712469307158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd304c0e62644706891965274771e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3575554980315874768
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +152,7 @@ Transform:
   m_Children:
   - {fileID: 5665495146855072882}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &3902002831730121264
 CircleCollider2D:
@@ -175,7 +188,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.76
 --- !u!252 &8056174619390436470
 SurfaceEffector2D:
   m_ObjectHideFlags: 0

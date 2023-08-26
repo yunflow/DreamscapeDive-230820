@@ -12,7 +12,7 @@ public class HookBullet : MonoBehaviour {
     private bool isHooked;
     private bool hookProcessing;
 
-    public Vector2 playerTargetPos;
+    [HideInInspector] public Vector2 playerTargetPos;
     private GameObject player;
 
     private void Awake() {
