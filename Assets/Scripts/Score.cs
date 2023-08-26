@@ -6,7 +6,6 @@ using TMPro;
 public class Score : MonoBehaviour
 {
     public static Score instance;
-    public TextMeshProUGUI text;
     public ScoreBar scoreBar;
 
     public int score;
@@ -22,7 +21,6 @@ public class Score : MonoBehaviour
     { 
         score += value;
         scoreBar.SetScore(score);
-        text.text = "X" + score.ToString();
     }
 
 }

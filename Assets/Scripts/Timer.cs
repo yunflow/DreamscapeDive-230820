@@ -2,9 +2,9 @@ using TMPro;
 using UnityEngine;
 
 public class Timer : MonoBehaviour {
-    [SerializeField] private TMP_Text timeText;
-    [SerializeField] private int maxTime = 30;
+    [SerializeField] private float maxTime = 30;
 
+    public O2Bar o2Bar;
     private float currentTimeValue;
     private PlayerDeath playerDeath;
 
@@ -13,8 +13,9 @@ public class Timer : MonoBehaviour {
     }
 
     private void Start() {
-        timeText.text = maxTime.ToString();
         currentTimeValue = maxTime;
+        o2Bar.SetMaxOxygen(maxTime);
+        o2Bar.SetCurrentOxygen(currentTimeValue);
     }
 
     private void Update() {
@@ -25,12 +26,12 @@ public class Timer : MonoBehaviour {
 
     private void SetTimer() {
         // 如果时间到0，游戏结束
-        if (Mathf.CeilToInt(currentTimeValue) == 0) {
+        if (currentTimeValue <= 0) {
             playerDeath.GameOver();
             return;
         }
 
         currentTimeValue -= Time.deltaTime;
-        timeText.text = Mathf.CeilToInt(currentTimeValue).ToString();
+        o2Bar.SetCurrentOxygen(currentTimeValue);
     }
 }
