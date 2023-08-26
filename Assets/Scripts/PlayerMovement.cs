@@ -152,6 +152,7 @@ public class PlayerMovement : MonoBehaviour {
         if (!canJump || playerDeath.IsGameOver) return;
 
         if (value.isPressed && isOnPlanet) {
+            AudioManager.Instance.PlaySFX("Jump");
             rb.velocity = new Vector2(0f, jumpForce);
         }
     }
