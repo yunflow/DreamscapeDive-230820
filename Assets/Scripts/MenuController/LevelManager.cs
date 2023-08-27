@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
-
+    [SerializeField] private int maxScenes = 6;
     private int currentLevel = 2; // Start from level 2
 
     private void Awake()
@@ -43,7 +43,7 @@ public class LevelManager : MonoBehaviour
     {
         currentLevel++;
 
-        if (currentLevel <= 4) // If not the last scene
+        if (currentLevel < maxScenes) // If not the last scene
         {
             return currentLevel;
         }
