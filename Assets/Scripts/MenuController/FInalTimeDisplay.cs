@@ -10,6 +10,6 @@ public class FInalTimeDisplay : MonoBehaviour {
 
     private void Start() {
         int finalTime = Mathf.FloorToInt(TotleTimeKeeper.Instance.TotalTime);
-        finalTimeText.text = $"You Final Time:\n{finalTime} sec!\nKeep Trying!";
+        finalTimeText.text = $"You Final Time: {finalTime} sec!";
     }
 }
