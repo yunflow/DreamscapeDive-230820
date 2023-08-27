@@ -75,6 +75,7 @@ public class PlayerMovement : MonoBehaviour {
                     playerState = State.CanJump;
                     break;
                 case Planet.State.Reverse:
+                    AudioManager.Instance.PlaySFX("Reverse");
                     playerState = State.IsReverse;
                     break;
             }
@@ -167,6 +168,7 @@ public class PlayerMovement : MonoBehaviour {
         if (!canHook || playerDeath.IsGameOver) return;
 
         if (value.isPressed) {
+            AudioManager.Instance.PlaySFX("Hook");
             hook.StartHook();
             playerState = State.Normal;
         }

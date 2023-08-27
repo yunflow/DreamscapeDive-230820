@@ -55,21 +55,25 @@ public class AudioManager : MonoBehaviour
 
     public void ToggleMusic()
     {
+        AudioManager.Instance.PlaySFX("Click");
         musicSource.mute = !musicSource.mute;
     }
 
     public void ToggleSFX()
     {
+        AudioManager.Instance.PlaySFX("Click");
         sfxSource.mute = !sfxSource.mute;
     }
 
     public void MusicVolume(float volume)
     {
+        AudioManager.Instance.PlaySFX("Click");
         musicSource.volume = volume;
     }
 
     public void SFXVolume(float volume)
     {
+        AudioManager.Instance.PlaySFX("Click");
         sfxSource.volume = volume;
     }
 }

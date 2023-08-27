@@ -42,7 +42,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4107888889997558202, guid: 17af75bc20e704e2fbbccac8006e5c47, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 157074e0136344a1d99bdab725de9665, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -288,7 +288,7 @@ Transform:
   - {fileID: 7005459549856393862}
   - {fileID: 5597036585206967100}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3569013784672670624
 MonoBehaviour:
@@ -304,27 +304,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSounds:
   - name: Theme
-    clip: {fileID: 8300000, guid: 8ddf8fbe62b2849aea9c1af2161ec938, type: 3}
+    clip: {fileID: 8300000, guid: ac258ad51e8bf4e0289ab79306c989b4, type: 3}
   sfxSounds:
   - name: Jump
     clip: {fileID: 8300000, guid: 5d1acfe8525b24d3686c6ed987652915, type: 3}
   - name: Hook
-    clip: {fileID: 8300000, guid: 4303a1f105db04834a5375a80c80eb21, type: 3}
+    clip: {fileID: 8300000, guid: d44c089f9ad0c47db9780967e3e6d907, type: 3}
   - name: Reverse
-    clip: {fileID: 8300000, guid: 4303a1f105db04834a5375a80c80eb21, type: 3}
+    clip: {fileID: 8300000, guid: 8b9c72d3351b54c7cb6ad304cc4efe16, type: 3}
   - name: Win
-    clip: {fileID: 8300000, guid: f856d834380ff47efabc930f183f45f2, type: 3}
+    clip: {fileID: 8300000, guid: 749a48ccc14c84255be89b6f02e17b67, type: 3}
   - name: Die
-    clip: {fileID: 8300000, guid: f856d834380ff47efabc930f183f45f2, type: 3}
+    clip: {fileID: 8300000, guid: 1052b219fbb444c1e8027401f7c0c9b0, type: 3}
   - name: Teleport
     clip: {fileID: 8300000, guid: ac869f86fd7e842888e2e4c5c36497a6, type: 3}
   - name: Start
-    clip: {fileID: 8300000, guid: 4303a1f105db04834a5375a80c80eb21, type: 3}
+    clip: {fileID: 8300000, guid: 60c2933d9519c42b3be122a40d76105c, type: 3}
   - name: HitOnStone
     clip: {fileID: 8300000, guid: 05bf13f7764a34c30b7e4e3042ec5582, type: 3}
-  - name: SFX2
-    clip: {fileID: 8300000, guid: 4303a1f105db04834a5375a80c80eb21, type: 3}
-  - name: SFX3
-    clip: {fileID: 8300000, guid: 4303a1f105db04834a5375a80c80eb21, type: 3}
+  - name: Click
+    clip: {fileID: 8300000, guid: 60c2933d9519c42b3be122a40d76105c, type: 3}
   musicSource: {fileID: 4934902578366214670}
   sfxSource: {fileID: 6031470904318699712}

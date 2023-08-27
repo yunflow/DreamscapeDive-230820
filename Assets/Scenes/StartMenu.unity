@@ -1134,6 +1134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aff8f71567a849cb950882d2a6aa7e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxScenes: 6
 --- !u!4 &1971619286
 Transform:
   m_ObjectHideFlags: 0
@@ -1204,10 +1205,6 @@ PrefabInstance:
     - target: {fileID: 4183977638669003755, guid: c77ef2e80e2b34e9c954b337f7c46080, type: 3}
       propertyPath: m_Name
       value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4934902578366214670, guid: c77ef2e80e2b34e9c954b337f7c46080, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
