@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: fill
+  m_Name: StarBarFill
   m_Shader: {fileID: -6465566751694194690, guid: fb733af8ae77b46a28a4f2ac3970a29d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -55,5 +55,5 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 4.169409, g: 0, b: 0.5082155, a: 0}
+    - _Color: {r: 12.741214, g: 0.7533199, b: 0, a: 0.8666667}
   m_BuildTextureStacks: []
