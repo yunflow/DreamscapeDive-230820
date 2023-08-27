@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour {
     private bool canHook;
     private bool isReverse;
     public bool isMoving;
+    public bool isHooking = false;
 
     private Camera mainCamera;
     private Rigidbody2D rb;
@@ -80,8 +81,10 @@ public class PlayerMovement : MonoBehaviour {
                     break;
             }
         }
+    }
 
-        if (other.gameObject.GetComponent<Obstacle>()) {
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.GetComponent<Obstacle>() && !playerDeath.IsGameOver) {
             AudioManager.Instance.PlaySFX("HitOnStone");
             playerDeath.GameOver();
         }
@@ -175,6 +178,8 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void DetectingGravity() {
+        if (isHooking) return;
+        
         if (isOnPlanet) {
             rb.gravityScale = 1;
         }

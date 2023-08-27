@@ -20,7 +20,6 @@ public class TotleTimeKeeper : MonoBehaviour {
     private void Update() {
         if (IsProcessing) {
             TotalTime += Time.deltaTime;
-            Debug.Log(TotalTime);
         }
     }
 
