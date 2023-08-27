@@ -1246,6 +1246,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3569013784672670624, guid: c77ef2e80e2b34e9c954b337f7c46080, type: 3}
+      propertyPath: sfxSounds.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569013784672670624, guid: c77ef2e80e2b34e9c954b337f7c46080, type: 3}
+      propertyPath: sfxSounds.Array.data[9].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4b891011aa5b24c7897014b7f28a6a0c, type: 3}
+    - target: {fileID: 3569013784672670624, guid: c77ef2e80e2b34e9c954b337f7c46080, type: 3}
+      propertyPath: sfxSounds.Array.data[9].name
+      value: Collect
+      objectReference: {fileID: 0}
     - target: {fileID: 4183977638669003755, guid: c77ef2e80e2b34e9c954b337f7c46080, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -1347,9 +1359,53 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4274663253000985805, guid: b389629db6f7543e698583ef3d8dc047, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4274663253000985805, guid: b389629db6f7543e698583ef3d8dc047, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660157381478355041, guid: b389629db6f7543e698583ef3d8dc047, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660157381478355041, guid: b389629db6f7543e698583ef3d8dc047, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660157381478355041, guid: b389629db6f7543e698583ef3d8dc047, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5446533064631472260, guid: b389629db6f7543e698583ef3d8dc047, type: 3}
       propertyPath: m_Name
       value: AudioPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5446533064631472260, guid: b389629db6f7543e698583ef3d8dc047, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905141853297552686, guid: b389629db6f7543e698583ef3d8dc047, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905141853297552686, guid: b389629db6f7543e698583ef3d8dc047, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878776692328672480, guid: b389629db6f7543e698583ef3d8dc047, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878776692328672480, guid: b389629db6f7543e698583ef3d8dc047, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878776692328672480, guid: b389629db6f7543e698583ef3d8dc047, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

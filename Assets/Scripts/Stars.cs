@@ -18,6 +18,7 @@ public class Stars : MonoBehaviour
     {
         if (item.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySFX("Collect");
             Score.instance.ChangeScore(starValue);
         }
     }
