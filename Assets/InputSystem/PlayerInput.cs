@@ -209,6 +209,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Hook"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c3231210-8733-4ec3-b6ea-db1f76ca42c1"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Hook"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }

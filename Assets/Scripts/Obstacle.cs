@@ -20,14 +20,6 @@ public class Obstacle : MonoBehaviour {
         ObstacleRotation();
     }
 
-    // 如果该障碍物撞到玩家，游戏结束
-    private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.GetComponent<PlayerDeath>()) {
-            AudioManager.Instance.PlaySFX("HitOnStone");
-            other.gameObject.GetComponent<PlayerDeath>().GameOver();
-        }
-    }
-
     private void ObstacleRotation() {
         switch (rotationState) {
             default:

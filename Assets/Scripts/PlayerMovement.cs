@@ -79,6 +79,11 @@ public class PlayerMovement : MonoBehaviour {
                     break;
             }
         }
+
+        if (other.gameObject.GetComponent<Obstacle>()) {
+            AudioManager.Instance.PlaySFX("HitOnStone");
+            playerDeath.GameOver();
+        }
     }
 
     private void OnMove(InputValue value) {
