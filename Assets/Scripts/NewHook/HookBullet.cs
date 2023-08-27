@@ -46,6 +46,7 @@ public class HookBullet : MonoBehaviour {
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
         PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
         rb.isKinematic = true;
+        rb.velocity = Vector2.zero;
         playerMovement.allowMove = false;
 
         float timePassed = 0f;

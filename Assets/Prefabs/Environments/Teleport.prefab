@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1903570540702059478}
   - component: {fileID: 3950567582781462823}
-  - component: {fileID: 1488371100682393840}
+  - component: {fileID: 5413741993407500009}
   m_Layer: 0
   m_Name: Port_in
   m_TagString: Untagged
@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portOut: {fileID: 5270730836113692634}
---- !u!58 &1488371100682393840
-CircleCollider2D:
+--- !u!70 &5413741993407500009
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -81,9 +81,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.35
+  m_Offset: {x: -0.0017176514, y: 0.048084624}
+  m_Size: {x: 0.9965671, y: 0.52602357}
+  m_Direction: 1
 --- !u!1 &1883019303993799969
 GameObject:
   m_ObjectHideFlags: 0
