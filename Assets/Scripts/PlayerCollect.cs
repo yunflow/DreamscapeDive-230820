@@ -19,7 +19,11 @@ public class PlayerCollect : MonoBehaviour
     // interact with collectables
     private void OnTriggerEnter2D(Collider2D item)
     {
-        if (item.gameObject.CompareTag("CollectableStars"))
+        if (item.gameObject.GetComponent<Stars>() && !item.gameObject.GetComponent<Stars>().isDone) {
+            item.gameObject.GetComponent<Stars>().isDone = true;
+            AudioManager.Instance.PlaySFX("Collect");
+            Score.instance.ChangeScore(item.GetComponent<Stars>().starValue);
             Destroy(item.gameObject);
+        }
     }
 }

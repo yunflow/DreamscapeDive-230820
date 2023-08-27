@@ -7,6 +7,7 @@ public class Stars : MonoBehaviour
     public int starValue = 1;
     public FinishingLine finishingLine;
     public ScoreBar scoreBar;
+    public bool isDone = false;
 
     private void Start()
     {
@@ -16,10 +17,6 @@ public class Stars : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D item)
     {
-        if (item.gameObject.CompareTag("Player"))
-        {
-            AudioManager.Instance.PlaySFX("Collect");
-            Score.instance.ChangeScore(starValue);
-        }
+
     }
 }
