@@ -9,5 +9,6 @@ public class StartMenu : MonoBehaviour
     {
         AudioManager.Instance.PlaySFX("Start");
         SceneManager.LoadScene(2); // Load the game scene
+        TotleTimeKeeper.Instance.StartTotalTime();
     }
 }

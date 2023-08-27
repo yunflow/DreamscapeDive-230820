@@ -28,6 +28,7 @@ public class PlayerDeath : MonoBehaviour {
     }
 
     public void GameOver() {
+        TotleTimeKeeper.Instance.PauseTotalTime();
         IsGameOver = true;
         Debug.Log("GameOver");
         gameOverImage.SetActive(true);
@@ -38,5 +39,6 @@ public class PlayerDeath : MonoBehaviour {
         int level = LevelManager.Instance.GetCurrentLevelIndex();
         Debug.Log("Reloading: " + level);
         SceneManager.LoadScene(level);
+        TotleTimeKeeper.Instance.StartTotalTime();
     }
 }

@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
         AudioManager.Instance.PlaySFX("Click");
         LevelManager.Instance.QuitToStartScene();
         SceneManager.LoadScene("StartMenu"); // Load the start menu
+        TotleTimeKeeper.Instance.ResetTotalTime();
     }
 
     public void NextLevel()
@@ -17,5 +18,6 @@ public class MainMenu : MonoBehaviour
         AudioManager.Instance.PlaySFX("Click");
         int level = LevelManager.Instance.CompleteLevel();
         SceneManager.LoadScene(level);
+        TotleTimeKeeper.Instance.StartTotalTime();
     }
 }
